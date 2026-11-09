@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday Zaaa! 🎂🧸🤍</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Sacramento&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://tailwindcss.com"></script>
+  <script src="https://jsdelivr.net"></script>
+  <link href="https://googleapis.com" rel="stylesheet">
   <style>
     body {
       font-family: 'Quicksand', sans-serif;
@@ -39,7 +39,7 @@
 
     .polaroid {
       background: white;
-      padding: 14px 14px 28px 14px;
+      padding: 14px 14px 20px 14px;
       box-shadow: 0 12px 30px rgba(255, 105, 180, 0.35);
       transform: rotate(-2deg);
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -56,26 +56,6 @@
     @keyframes bounceGemes {
       0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-10px) scale(1.04); }
-    }
-
-    .scroll-arrow {
-      animation: arrowBounce 1.2s infinite;
-    }
-    @keyframes arrowBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
-
-    .custom-scroll::-webkit-scrollbar {
-      width: 8px;
-    }
-    .custom-scroll::-webkit-scrollbar-track {
-      background: #ffe5ec;
-      border-radius: 10px;
-    }
-    .custom-scroll::-webkit-scrollbar-thumb {
-      background: #ff85a1;
-      border-radius: 10px;
     }
 
     .click-sparkle {
@@ -114,21 +94,146 @@
       </button>
     </div>
 
-    <!-- HALAMAN 2: FOTO & KALENDER -->
-    <div id="page-2" class="hidden text-center py-2">
+    <!-- HALAMAN 2: FOTO, DOA, AUDIO PLAYER, & KALENDER -->
+    <div id="page-2" class="hidden text-center py-2 max-h-[85vh] overflow-y-auto pr-1">
       <h2 class="font-romantic text-4xl text-pink-600 font-bold mb-1">Dari Nanadd buat Zaaa 🤍</h2>
       <p class="font-cute text-xs text-pink-400 mb-3">ʕ•ᴥ•ʔ⊃❤️ Hugs & Love for You! 🧸</p>
       
       <!-- Frame Foto Polaroid -->
-      <div class="polaroid mx-auto w-64 rounded-xl mb-4 relative group cursor-pointer">
+      <div class="polaroid mx-auto w-64 rounded-xl mb-4 relative group cursor-pointer" onclick="triggerConfetti()">
         <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-200/90 px-3 py-0.5 rounded-full text-xs font-cute text-pink-600 shadow-sm z-10 flex items-center gap-1">
           🧸 Photo Memories 🎀
         </span>
-        <img src="foto-zaaa.png" alt="Foto nanaddd" class="w-full h-auto rounded-lg object-cover">
+        <img src="image_AW55Sl.png" alt="Foto Kenangan Zaaa" class="w-full h-auto rounded-lg object-cover">
       </div>
+
+      <!-- KOTAK DOA & HARAPAN -->
+      <div class="bg-gradient-to-r from-rose-50 to-pink-50 rounded-2xl p-4 border border-pink-100 mb-4 max-w-[280px] mx-auto shadow-sm text-center">
+        <p class="font-romantic text-3xl text-pink-500 font-bold mb-1">Barakallah Fii Umrik ✨</p>
+        <p class="font-cute text-xs text-gray-600 leading-relaxed">
+          Semoga panjang umur, sehat selalu, dimudahkan segala urusannya, dan dilimpahkan kebahagiaan setiap hari. Tetap jadi orang baik dan ceria yaa! All the best wishes for you, Zaaa! 🎂🧸🤍
+        </p>
+      </div>
+
+      <!-- KUTIPAN PEMUTAR MUSIK ESTETIK (AUDIO PLAYER UI) -->
+      <div class="bg-pink-50/80 rounded-2xl p-3 border border-pink-100 mb-4 max-w-[280px] mx-auto shadow-sm">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-gradient-to-tr from-pink-400 to-rose-300 rounded-lg flex items-center justify-center animate-spin" style="animation-duration: 6s;">
+            🎵
+          </div>
+          <div class="text-left flex-1 min-w-0">
+            <p class="text-xs font-bold text-pink-600 truncate font-cute">Kue Coklat Balon Warna Warni 🎈</p>
+            <p class="text-[10px] text-pink-400 truncate">Special Backsound for Zaaa</p>
+          </div>
+        </div>
+        <!-- Progress Bar Tiruan -->
+        <div class="w-full bg-pink-200 h-1 rounded-full mt-2.5 relative">
+          <div class="bg-pink-500 h-1 rounded-full w-2/3"></div>
+        </div>
+        <!-- Kontrol Konten Audio Asli -->
+        <audio id="birthday-audio" src="kue-coklat-balon-warna-warni.mp3" preload="auto" loop></audio>
+        <button id="play-btn" onclick="toggleAudio()" class="mt-2 text-xs bg-pink-400 hover:bg-pink-500 text-white font-cute px-3 py-1 rounded-full transition-all">
+          ▶️ Putar Musik
+        </button>
+      </div>
+
+      <!-- KUTIPAN KALENDER ESTETIK (NOVEMBER 2026) -->
+      <div class="bg-white rounded-2xl p-3 border-2 border-pink-100 max-w-[280px] mx-auto shadow-sm mb-2 relative">
+        <div class="text-pink-500 font-cute text-xs font-bold mb-2 flex justify-between px-1">
+          <span>November 2026</span>
+          <span>🧸✨</span>
+        </div>
+        <div class="grid grid-cols-7 gap-1 text-[10px] text-gray-500 font-cute relative">
+          <span class="text-pink-400 font-bold">S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+          <!-- Baris Tanggal Kosong Awal Bulan -->
+          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+          <span>8</span>
+          <!-- Tanggal 9 Ditandai Khusus -->
+          <span class="bg-gradient-to-br from-pink-400 to-rose-400 text-white rounded-full font-bold shadow-sm p-0.5 scale-110 relative z-10 flex items-center justify-center">
+            9
+            <span class="bg-pink-400 text-white rounded-full animate-ping absolute w-5 h-5 opacity-40 top-0 left-0"></span>
+          </span>
+          <span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+          <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
+          <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
+          <span>29</span><span>30</span>
+        </div>
+        <p class="font-cute text-[10px] text-pink-400 mt-2 font-semibold">✨ Hari Spesial Zaaa! 🎂</p>
+      </div>
+      
     </div>
 
   </div>
 
-</body>
-</html>
+  <!-- SCRIPT LOGIKA HALAMAN & EFEK -->
+  <script>
+    function nextPage(pageNumber) {
+      if (pageNumber === 2) {
+        document.getElementById('page-1').classList.add('hidden');
+        document.getElementById('page-2').classList.remove('hidden');
+        triggerConfetti();
+        startFloatingEmojis();
+        
+        // Memutar musik otomatis saat masuk halaman kedua
+        const audio = document.getElementById('birthday-audio');
+        audio.play().then(() => {
+          document.getElementById('play-btn').textContent = '⏸️ Jeda Musik';
+        }).catch(() => {});
+      }
+    }
+
+    function toggleAudio() {
+      const audio = document.getElementById('birthday-audio');
+      const btn = document.getElementById('play-btn');
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = '⏸️ Jeda Musik';
+      } else {
+        audio.pause();
+        btn.textContent = '▶️ Putar Musik';
+      }
+    }
+
+    function triggerConfetti() {
+      confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 },
+        colors: ['#ff85a1', '#ffb3c1', '#ffc2d1', '#f72585', '#b5179e']
+      });
+    }
+
+    function spawnSparkle(e) {
+      const sparkles = ['✨', '💖', '🤍', '🌸', '🎀'];
+      const randomSparkle = sparkles[Math.floor(Math.random() * sparkles.length)];
+      
+      const el = document.createElement('div');
+      el.className = 'click-sparkle';
+      el.textContent = randomSparkle;
+      el.style.left = `${e.clientX - 12}px`;
+      el.style.top = `${e.clientY - 12}px`;
+      
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 800);
+    }
+
+    function popHeart(element) {
+      confetti({ particleCount: 20, angle: 60, spread: 55, origin: { x: 0 } });
+      confetti({ particleCount: 20, angle: 120, spread: 55, origin: { x: 1 } });
+    }
+function startFloatingEmojis() {
+const container = document.getElementById('emoji-container');
+const emojis = ['🧸', '💖', '🤍', '✨', '🎀', '🎈'];
+setInterval(() => {
+const el = document.createElement('div');
+el.className = 'floating-emoji';
+el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+el.style.left = ${Math.random() * 100}vw;
+el.style.animationDuration = ${4 + Math.random() * 4}s;
+el.style.fontSize = ${20 + Math.random() * 24}px;
+container.appendChild(el);
+setTimeout(() => el.remove(), 7000);
+}, 400);
+}
+
+
