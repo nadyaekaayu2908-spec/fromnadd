@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday Zaaa! 🎂🧸🤍</title>
+  <!-- Script CSS utama (Membutuhkan Koneksi Internet saat dibuka) -->
   <script src="https://tailwindcss.com"></script>
   <script src="https://jsdelivr.net"></script>
   <link href="https://googleapis.com" rel="stylesheet">
@@ -16,6 +17,11 @@
     .font-cute { font-family: 'Fredoka', cursive; }
     .font-romantic { font-family: 'Sacramento', cursive; }
     
+    /* Pengaman tambahan agar halaman 2 tersembunyi total di awal */
+    #page-2 {
+      display: none;
+    }
+
     .floating-emoji {
       position: absolute;
       user-select: none;
@@ -95,7 +101,7 @@
     </div>
 
     <!-- HALAMAN 2: FOTO, DOA, AUDIO PLAYER, & KALENDER -->
-    <div id="page-2" class="hidden text-center py-2 max-h-[85vh] overflow-y-auto pr-1">
+    <div id="page-2" class="text-center py-2 max-h-[85vh] overflow-y-auto pr-1">
       <h2 class="font-romantic text-4xl text-pink-600 font-bold mb-1">Dari Nanadd buat Zaaa 🤍</h2>
       <p class="font-cute text-xs text-pink-400 mb-3">ʕ•ᴥ•ʔ⊃❤️ Hugs & Love for You! 🧸</p>
       
@@ -115,7 +121,7 @@
         </p>
       </div>
 
-      <!-- KUTIPAN PEMUTAR MUSIK ESTETIK (AUDIO PLAYER UI) -->
+      <!-- KUTIPAN PEMUTAR MUSIK ESTETIK -->
       <div class="bg-pink-50/80 rounded-2xl p-3 border border-pink-100 mb-4 max-w-[280px] mx-auto shadow-sm">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 bg-gradient-to-tr from-pink-400 to-rose-300 rounded-lg flex items-center justify-center animate-spin" style="animation-duration: 6s;">
@@ -126,11 +132,9 @@
             <p class="text-[10px] text-pink-400 truncate">Special Backsound for Zaaa</p>
           </div>
         </div>
-        <!-- Progress Bar Tiruan -->
         <div class="w-full bg-pink-200 h-1 rounded-full mt-2.5 relative">
           <div class="bg-pink-500 h-1 rounded-full w-2/3"></div>
         </div>
-        <!-- Kontrol Konten Audio Asli -->
         <audio id="birthday-audio" src="kue-coklat-balon-warna-warni.mp3" preload="auto" loop></audio>
         <button id="play-btn" onclick="toggleAudio()" class="mt-2 text-xs bg-pink-400 hover:bg-pink-500 text-white font-cute px-3 py-1 rounded-full transition-all">
           ▶️ Putar Musik
@@ -145,10 +149,8 @@
         </div>
         <div class="grid grid-cols-7 gap-1 text-[10px] text-gray-500 font-cute relative">
           <span class="text-pink-400 font-bold">S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
-          <!-- Baris Tanggal Kosong Awal Bulan -->
           <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
           <span>8</span>
-          <!-- Tanggal 9 Ditandai Khusus -->
           <span class="bg-gradient-to-br from-pink-400 to-rose-400 text-white rounded-full font-bold shadow-sm p-0.5 scale-110 relative z-10 flex items-center justify-center">
             9
             <span class="bg-pink-400 text-white rounded-full animate-ping absolute w-5 h-5 opacity-40 top-0 left-0"></span>
@@ -169,12 +171,11 @@
   <script>
     function nextPage(pageNumber) {
       if (pageNumber === 2) {
-        document.getElementById('page-1').classList.add('hidden');
-        document.getElementById('page-2').classList.remove('hidden');
+        document.getElementById('page-1').style.display = 'none';
+        document.getElementById('page-2').style.display = 'block';
         triggerConfetti();
         startFloatingEmojis();
         
-        // Memutar musik otomatis saat masuk halaman kedua
         const audio = document.getElementById('birthday-audio');
         audio.play().then(() => {
           document.getElementById('play-btn').textContent = '⏸️ Jeda Musik';
@@ -221,7 +222,9 @@
       confetti({ particleCount: 20, angle: 60, spread: 55, origin: { x: 0 } });
       confetti({ particleCount: 20, angle: 120, spread: 55, origin: { x: 1 } });
     }
-function startFloatingEmojis() {
+
+    function startFloatingEmojis() {
+Gunakan kode dengan hati-hati.
 const container = document.getElementById('emoji-container');
 const emojis = ['🧸', '💖', '🤍', '✨', '🎀', '🎈'];
 setInterval(() => {
@@ -235,5 +238,4 @@ container.appendChild(el);
 setTimeout(() => el.remove(), 7000);
 }, 400);
 }
-
 
